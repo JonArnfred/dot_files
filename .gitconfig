@@ -1,0 +1,62 @@
+[user]
+	email = [email]
+  name = [name]
+  username = [username]
+
+[core]
+  editor=vim
+  sshComand="ssh -i ~/.ssh/keys/key"
+
+[color]
+	ui = auto
+
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+
+[diff]
+	tool = vimdiff
+
+[credential]
+  # set cache for private key password, in seconds
+	helper = cache --timeout=10800
+
+[alias]
+	#############
+	a = add --all
+	#############
+	b = branch
+	#############
+	cm = commit -m
+	#############
+	d = diff
+	dc = diff --cached
+	#############
+	ps = push
+	psom = push origin master
+	#############
+	pl = pull
+  plo = pull origin
+  plom = pull origin master
+	#############
+  re = reset
+	#############
+  r = remote
+	ra = remote add
+	rr = remote rm
+	rv = remote -v
+  #############
+  s = status

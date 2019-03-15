@@ -1,0 +1,35 @@
+:toc: macro
+:toc-title:
+:toclevels: 99
+
+# Dot files
+
+toc::[]
+
+## Introduction
+
+Some configuration files that I like to use.
+
+### bash aliases
+There is no neat way to load bash aliases for all users of the system. Your best option is to place aliases
+in ~/.bash_aliases of each user, a file loaded by ~/.bashrc. This goes for the root user too.
+
+### vim configuration
+For the vim config file to be loaded by all users, it should be /etc/vim/vimrc.local and not /etc/vim/vimrc which might
+be changed during update, and sources vimrc. The variable for the user specific .vimrc is $MYVIMRC.
+On Ubuntu the $VIM variable refers to the vim config directory usr/share/vim. The content of this folder should just stay as is.
+
+
+### postgresql password file
+From the documentation, https://www.postgresql.org/docs/current/libpq-pgpass.html +
+
+* The program must be using the C client library libpq to connect to PostgreSQL (the JDBC driver, for example, doesn't use libpq). +
+* The .pgpass file must be in the home directory of the user that owns the process which uses libpq to connect to PostgreSQL. +
+* You can override the default location by either putting the variable PGPASSFILE in the process' environment or (from v10 on) with the connection parameter passfile. +
+* The .pgpass file must have permissions 0600 or less. +
+
+### ssh config file
+Should live in ~/.ssh/config. A convenience file for using ssh. +
+
+### git config file
+Run `man git config` for a comprehensive overview of git configuration properties and files. +

@@ -1,0 +1,8 @@
+Host *
+  Proocol 2
+  Port 22
+  ForwardAgent no
+Host dev
+  HostName dev.example.com
+  User foo
+  IdentityFile ~/.ssh/private_key
