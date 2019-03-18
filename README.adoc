@@ -11,14 +11,18 @@ toc::[]
 Some configuration files that I like to use.
 
 ### bash aliases
-There is no neat way to load bash aliases for all users of the system. Your best option is to place aliases
-in ~/.bash_aliases of each user, a file loaded by ~/.bashrc. This goes for the root user too.
+* Debian, place aliases in ~/.bash_aliases, a file loaded by ~/.bashrc.
+
+* Mac, place aliases in ~/.bash_profile.
 
 ### vim configuration
-For the vim config file to be loaded by all users, it should be /etc/vim/vimrc.local and not /etc/vim/vimrc which might
-be changed during update, and sources vimrc. The variable for the user specific .vimrc is $MYVIMRC.
-On Ubuntu the $VIM variable refers to the vim config directory usr/share/vim. The content of this folder should just stay as is.
+In Vim, run :version for a list of configuration files. + 
 
+Mac + 
+You should use the ~/.vimrc. There is a global vim configuration file in /usr/share/vim/virc, but files in /usr/share will be overridden by a system upgrade.
+
+Debian + 
+To load the vim configuration file by all users, you could also decide to use the global /etc/vim/vimrc.local (not /etc/vim/vimrc), in case you don't want to edit a default file. On most distroes /usr/share/vim/vimrc sources vimrc.local.
 
 ### postgresql password file
 From the documentation, https://www.postgresql.org/docs/current/libpq-pgpass.html +
@@ -32,4 +36,9 @@ From the documentation, https://www.postgresql.org/docs/current/libpq-pgpass.htm
 Should live in ~/.ssh/config. A convenience file for using ssh. +
 
 ### git config file
-Run `man git config` for a comprehensive overview of git configuration properties and files. +
+The global git config files is openened by "git config --global --edit", it lives in ~/.gitconfig on all platforms. `man git config` for a comprehensive overview of git configuration properties.
+
+
+
+
+

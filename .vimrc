@@ -2,8 +2,24 @@
 "set vi compatibility
 set nocompatible
 
-" set the vimrc to the system wide vimrc which is not overridden
-let $MYVIMRC="/etc/vim/vimrc.local"
+""""""""""""""""""""""""""""""""""
+" Detect OS
+"""""""""""""""""""""""""""""""""""
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
+if g:os == "Linux"
+  "" set the vimrc to the system wide vimrc which is not overridden
+  let $MYVIMRC="/etc/vim/vimrc.local"
+"elseif g:os == "Darwin"
+"elseif g:os == "Windows"
+endif
+
 
 """"""""""""""""""""""""""""""""""""
 " Plugins
@@ -59,10 +75,14 @@ set fenc=utf-8 " encoding when writing to files
 set tenc=utf-8 " encoding in terminal
 
 " source .vimrc on save
-autocmd BufWritePost .vimrc source % 
+autocmd BufWritePost .vimrc source %
 
 " open .vimrc with ease, using the system wide .vimrc
 nnoremap <Leader>ev :vsp $MYVIMRC<CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" explanation: https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
+cmap w!! w !sudo tee > /dev/null %
 
 "csv settings
 let g:csv_nomap_space=1
@@ -114,7 +134,9 @@ set expandtab " expand tabs to spaces
 " Statusline
 """"""""""""""""""""""""""""""
 "statusline setup
-set statusline=%t\   "tail of the filename
+set statusline+=%F " full path of file
+
+
 
 "display a warning if fileformat isnt unix
 set statusline+=%#warningmsg#
