@@ -36,7 +36,8 @@
 
 [alias]
 	#############
-	a = add --all
+  a = add
+  aa = add --all
 	#############
 	b = branch
 	#############
@@ -60,3 +61,5 @@
 	rv = remote -v
   #############
   s = status
+  #############
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
